@@ -54,7 +54,7 @@ setup_environment_variables() {
 	export DOT_GITHUB_HOME="$XDG_CONFIG_HOME"
 	export PYTHON_CONFIGURE_OPTS="--enable-shared"  # Fix asdf python
 	export BASH_SILENCE_DEPRECATION_WARNING=1  # Silence Mac OS zsh default shell message
-	command_exists keybase && export KEYBASE_DIR=$(keybase config get mountdir | sed -e 's/^"//' -e 's/"$//')
+	command_exists keybase && [ keybase config get mountdir 2>/dev/null ] && export KEYBASE_DIR=$(keybase config get mountdir | sed -e 's/^"//' -e 's/"$//')
 }
 
 setup_all_the_bash_stuff() {
