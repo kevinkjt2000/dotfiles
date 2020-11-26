@@ -2,8 +2,7 @@
 
 ```
 mkdir -p ~/.local/bin
-mkdir -p ~/.local/share
-git clone git@github.com:kevinkjt2000/dotfiles.git ~/.local/share/chezmoi
 (cd ~/.local && curl -sfL https://git.io/chezmoi | sh)
-chezmoi apply
+~/.local/bin/chezmoi init git@github.com:kevinkjt2000/dotfiles.git
+~/.local/bin/chezmoi apply
 ```
