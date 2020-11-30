@@ -1,0 +1,42 @@
+[user]
+  email = kevinkjt2000@gmail.com
+  name = Kevin Tindall
+  signingkey = 0xE69596DCF298811B
+
+[github]
+  user = kevinkjt2000
+
+[commit]
+  gpgsign = true
+
+[core]
+  editor = nvim
+  excludesfile = ~/.config/gitignore_global
+
+[credential]
+  helper = /usr/lib/git-core/git-credential-libsecret
+
+[alias]
+  aa = add --all
+  amend = commit --amend
+  cleanup = "!git remote prune origin && git checkout -q master && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
+  co = checkout
+  ci = commit
+  ctags = "!${GIT_DIR}/hooks/ctags"
+  dc = diff --cached
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  mff = merge --ff-only
+  pff = pull --ff-only
+
+[init]
+  templatedir = ~/.config/git/template
+
+[includeIf "gitdir:~/repos/work/"]
+  path = ~/repos/work/.gitconfig
+
+[rerere]
+  autoupdate = true
+  enabled = true
+
+[hub]
+  protocol = ssh
