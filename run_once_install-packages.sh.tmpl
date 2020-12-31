@@ -1,4 +1,7 @@
-{{ if and (not (lookPath "brew")) (lookPath "curl") -}}
 #!/bin/sh
-/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+{{ if and (not (lookPath "brew")) (lookPath "curl") (lookPath "bash") -}}
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+{{ end -}}
+{{ if and (not (lookPath "tilt")) (lookPath "curl") (lookPath "bash") (lookPath "brew") -}}
+curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
 {{ end -}}
