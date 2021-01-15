@@ -1,7 +1,19 @@
 #!/bin/sh
+
+{{ if and (not (lookPath "poetry")) (lookPath "curl") (lookPath "python") -}}
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+{{ end -}}
+
 {{ if and (not (lookPath "brew")) (lookPath "curl") (lookPath "bash") -}}
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 {{ end -}}
+
 {{ if and (not (lookPath "tilt")) (lookPath "curl") (lookPath "bash") (lookPath "brew") -}}
 curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
+{{ end -}}
+
+{{ if eq .chezmoi.os "darwin" -}}
+rm -rf ~/Library/Caches/pypoetry/virtualenvs/*
+{{ else if eq .chezmoi.os "linux" -}}
+# TODO find poetry venv path on Linux to erase
 {{ end -}}
