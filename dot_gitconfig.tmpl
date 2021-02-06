@@ -10,9 +10,13 @@
   gpgsign = true
 
 [core]
+{{- if lookPath "nvim" }}
   editor = nvim
+{{- end }}
   excludesfile = ~/.config/gitignore_global
+{{- if lookPath "diff-so-fancy" }}
   pager = "diff-so-fancy | less --tabs=4 -RFX"
+{{- end }}
 
 [credential]
   helper = /usr/lib/git-core/git-credential-libsecret
