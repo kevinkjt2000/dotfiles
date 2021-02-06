@@ -1,0 +1,7 @@
+[user]
+	email = ktindall@redhat.com
+	name = Kevin Tindall
+	signingkey = 0xAD372D5115446873
+
+[commit]
+	gpgsign = true
