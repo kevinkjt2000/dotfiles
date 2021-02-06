@@ -14,15 +14,18 @@ brew "git"
 brew "git-gui"
 brew "gnupg"
 brew "jq"
+brew "lab"
 brew "lastpass-cli"
 brew "minikube"
-brew "mosh", args: ['HEAD']
+brew "mosh", args: ["HEAD"]
+brew "myrepos"
 brew "neovim"
 brew "podman"
 brew "ripgrep"
 brew "thefuck"
 brew "tmux"
 cask "bitwarden"
+cask "meld"
 cask "minishift"
 cask "postman"
 
@@ -32,6 +35,7 @@ brew "findutils"
 brew "libmagic"
 brew "pinentry-mac"
 brew "reattach-to-user-namespace"
+brew "xz"  # needed for _lzma python module
 cask "font-iosevka"
 cask "virtualbox"
 {{ else if eq .chezmoi.os "linux" -}}
