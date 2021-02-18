@@ -138,8 +138,14 @@ set nofixendofline " Don't automatically add a new line to the end of files
 
 if executable('rg')
 	set grepprg=rg\ --no-heading
-	let g:ctrlp_user_command = 'rg %s -g "" --files'
 endif
+
+let g:ctrlp_user_command = {
+	\ 'types': {
+		\ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard | grep -v "/\.keep"'],
+	\ },
+	\ 'fallback': 'find %s -type f',
+\ }
 
 set foldenable
 set foldlevelstart=10           " Open most folds by default
