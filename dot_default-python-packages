@@ -1,5 +1,7 @@
+jedi
+msgpack
 neovim
-poetry
+pipx
 rerun
 rope
 virtualenv

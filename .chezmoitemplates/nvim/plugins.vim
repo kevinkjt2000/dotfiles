@@ -12,7 +12,8 @@ call plug#begin(s:plugin_path)
 	Plug 'alvan/vim-closetag'
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'deoplete-plugins/deoplete-jedi', { 'do': 'python -m pip install -U jedi' }
+	Plug 'davidhalter/jedi-vim'
+	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'dense-analysis/ale'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'honza/vim-snippets'
@@ -29,7 +30,6 @@ call plug#begin(s:plugin_path)
 	Plug 'nfvs/vim-perforce'
 	Plug 'ollykel/v-vim'
 	Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
-	Plug 'python-mode/python-mode', { 'branch': 'develop' }
 	Plug 'sheerun/vim-polyglot'
 	Plug 'Shougo/deoplete.nvim', { 'do': function('InstallDeopleteDeps') }
 	Plug 'SirVer/ultisnips'
