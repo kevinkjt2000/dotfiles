@@ -1,0 +1,4 @@
+if has go; then
+	export GOPATH="$(go env GOPATH)"
+	PATH_add "$GOPATH/bin"
+fi
