@@ -34,6 +34,7 @@ call plug#begin(s:plugin_path)
 	Plug 'Shougo/deoplete.nvim', { 'do': function('InstallDeopleteDeps') }
 	Plug 'SirVer/ultisnips'
 	Plug 'slashmili/alchemist.vim'
+	Plug 'SuperBo/deoplete-clang'
 	Plug 'tpope/vim-abolish'
 	Plug 'tpope/vim-bundler'
 	Plug 'tpope/vim-dispatch'
