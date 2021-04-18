@@ -57,6 +57,9 @@ let g:deoplete#enable_at_startup = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" maximum candidate window length
+call deoplete#custom#source('_', 'max_menu_width', 80)
+
 let g:deoplete#sources#jedi#ignore_private_members = 1
 
 let g:jedi#completions_enabled = 0
