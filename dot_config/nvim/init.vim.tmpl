@@ -155,6 +155,9 @@ let g:ctrlp_user_command = {
 	\ 'fallback': 'find %s -type f',
 \ }
 
+" Disable CtrlP find root feature, so that search happens in the same directory vim is started from
+let g:ctrlp_working_path_mode = 0
+
 set foldenable
 set foldlevelstart=10           " Open most folds by default
 set foldnestmax=10              " Guards against too many folds
