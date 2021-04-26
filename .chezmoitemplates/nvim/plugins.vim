@@ -1,9 +1,10 @@
 let s:editor_root = '~/.config/nvim'
 let s:plugin_path = s:editor_root . '/bundle'
 
+let g:python3_host_prog = '~/.venvs/neovim/bin/python'
+
 function! InstallDeopleteDeps(info)
 	if a:info.status == 'installed' || a:info.force
-		!python -m pip install -U msgpack
 		UpdateRemotePlugins
 	endif
 endfunction
