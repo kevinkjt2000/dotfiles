@@ -24,7 +24,7 @@
 [alias]
   aa = add --all
   amend = commit --amend
-  cleanup = "!git remote prune origin && git checkout -q master && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
+  cleanup = "!default_branch=$(git remote show origin | awk '/HEAD branch/ {print $NF}'); git remote prune origin && git checkout -q $default_branch && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base $default_branch $branch) && [[ $(git cherry $default_branch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
   co = checkout
   ci = commit
   ctags = "!${GIT_DIR}/hooks/ctags"
