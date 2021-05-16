@@ -8,6 +8,7 @@ main() {
 	add_to_path "$HOME/.poetry/bin"
 	add_to_path "/usr/local/sbin"
 	add_to_path /home/linuxbrew/.linuxbrew/bin
+	add_to_path /home/linuxbrew/.linuxbrew/sbin
 	command_exists brew && eval "$(brew shellenv)"
 	command_exists terraform && complete -C $(which terraform) terraform
 
