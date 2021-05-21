@@ -30,6 +30,7 @@ create_aliases() {
 		alias ls="ls --color=auto"
 	fi
 	command_exists thefuck && eval $(thefuck --alias shimatta)
+	alias pnvim="prj && nvim \"+CtrlP\""
 }
 
 setup_bash_it() {
@@ -67,6 +68,12 @@ setup_all_the_bash_stuff() {
 	command_exists dircolors && eval "$(dircolors)"  # Export LS_COLORS fanciness
 	setup_environment_variables
 	create_aliases
+}
+
+prj() {
+	local repos_path="$HOME/repos"
+	local selection=$(find "$repos_path" -maxdepth 5 -name '.git' -type d -printf '%P\0' | sed 's#/.git##g' | fzf --read0)
+	cd "$repos_path/$selection"
 }
 
 main
