@@ -10,7 +10,7 @@ main() {
 	add_to_path /home/linuxbrew/.linuxbrew/bin
 	add_to_path /home/linuxbrew/.linuxbrew/sbin
 	command_exists brew && eval "$(brew shellenv)"
-	command_exists terraform && complete -C $(which terraform) terraform
+	command_exists terraform && complete -C "$(which terraform)" terraform
 
 	command_exists direnv && eval "$(direnv hook bash)"
 
@@ -29,7 +29,7 @@ create_aliases() {
 	else
 		alias ls="ls --color=auto"
 	fi
-	command_exists thefuck && eval $(thefuck --alias shimatta)
+	command_exists thefuck && eval "$(thefuck --alias shimatta)"
 	alias pnvim="prj && nvim \"+CtrlP\""
 }
 
@@ -51,14 +51,25 @@ setup_environment_variables() {
 	export HISTCONTROL+=":erasedups"  # Erase duplicates form history
 	export HISTIGNORE="ls:bg:fg:history"
 	safe_append_prompt_command "history -a"  # Store history immediately
-	export GPG_TTY=$(tty)  # Enables interactive password entry for gpg
-	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	if GPG_TTY=$(tty); then
+		export GPG_TTY  # Enables interactive password entry for gpg
+	else
+		echo "WARN: failed to intitialize GPG_TTY"
+	fi
+	if SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket); then
+		export SSH_AUTH_SOCK
+	else
+		echo "WARN: failed to intitialize SSH_AUTH_SOCK"
+	fi
 	export CHROME_BIN=chromium  # Enables angular to find chrome exe
 	export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 	export DOT_GITHUB_HOME="$XDG_CONFIG_HOME"
 	export PYTHON_CONFIGURE_OPTS="--enable-shared"  # Fix asdf python
 	export BASH_SILENCE_DEPRECATION_WARNING=1  # Silence Mac OS zsh default shell message
-	command_exists keybase && [ keybase config get mountdir 2>/dev/null ] && export KEYBASE_DIR=$(keybase config get mountdir | sed -e 's/^"//' -e 's/"$//')
+	local keybase_dir
+	if command_exists keybase && keybase_dir=$(false && keybase config get --bare mountdir); then
+		export KEYBASE_DIR=$keybase_dir
+	fi
 }
 
 setup_all_the_bash_stuff() {
@@ -72,8 +83,12 @@ setup_all_the_bash_stuff() {
 
 prj() {
 	local repos_path="$HOME/repos"
-	local selection=$(find "$repos_path" -maxdepth 5 -name '.git' -type d -printf '%P\0' | sed 's#/.git##g' | fzf --read0)
-	cd "$repos_path/$selection"
+	local selection
+	if selection=$(find "$repos_path" -maxdepth 5 -name '.git' -type d -printf '%P\0' 2>/dev/null | sed 's#/.git##g' | fzf --read0); then
+		cd "$repos_path/$selection" || return
+	fi
 }
 
 main
+
+# vi: ft=sh
