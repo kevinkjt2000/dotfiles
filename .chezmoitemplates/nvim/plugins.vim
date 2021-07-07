@@ -17,6 +17,7 @@ call plug#begin(s:plugin_path)
 	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'dense-analysis/ale'
 	Plug 'editorconfig/editorconfig-vim'
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'honza/vim-snippets'
 	Plug 'huawenyu/neogdb.vim'
 	Plug 'jacoborus/tender.vim'
