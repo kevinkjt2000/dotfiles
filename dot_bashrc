@@ -5,7 +5,6 @@ main() {
 	setup_all_the_bash_stuff
 
 	add_to_path "$HOME/.local/bin"
-	add_to_path "$HOME/.poetry/bin"
 	add_to_path "/usr/local/sbin"
 	add_to_path /home/linuxbrew/.linuxbrew/bin
 	add_to_path /home/linuxbrew/.linuxbrew/sbin
