@@ -2,16 +2,17 @@
 [[ $- != *i* ]] && return
 
 main() {
-	setup_all_the_bash_stuff
-
 	add_to_path "$HOME/.local/bin"
 	add_to_path "/usr/local/sbin"
 	add_to_path /home/linuxbrew/.linuxbrew/bin
 	add_to_path /home/linuxbrew/.linuxbrew/sbin
-	command_exists brew && eval "$(brew shellenv)"
-	command_exists terraform && complete -C "$(which terraform)" terraform
 
+	setup_all_the_bash_stuff
+
+	command_exists brew && eval "$(brew shellenv)"
+	command_exists chezmoi && eval "$(chezmoi completion bash)"
 	command_exists direnv && eval "$(direnv hook bash)"
+	command_exists terraform && complete -C "$(which terraform)" terraform
 
 	if [ -d "$HOME/.asdf" ]; then
 		source "$HOME/.asdf/asdf.sh"
