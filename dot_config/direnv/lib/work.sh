@@ -20,12 +20,15 @@ openshift_login() {
 	fi
 }
 
-openshift_secret() {
+openshift_get_secret_json() {
 	local secret_name=$1
-	local secret_json_path=$2
-	local json
+	printf "%s" "$(oc get secret -o json "$secret_name")"
+}
+
+openshift_get_individual_secret_from_json() {
+	local json=$1
+	local secret_json_path=".data.$2"
 	if has jq && oc_is_logged_in; then
-		json=$(oc get secret -o json "$secret_name")
 		printf "%s" "$json" | jq -r "$secret_json_path" | base64 --decode
 	fi
 }
