@@ -1,8 +1,12 @@
 #!/bin/sh
 
 nvim_cleanly_install_and_update_plugins() {
+	{{ if and (lookPath "virtualenv") (lookPath "nvim") -}}
 	nvim +PlugClean! +PlugInstall +PlugUpdate +qall
 	echo {{ sha256sum (include ".chezmoitemplates/nvim/plugins.vim") }} > {{ joinPath .chezmoi.sourceDir ".checksums/plugins.vim" }}
+	{{- else -}}
+	:
+	{{- end }}
 }
 
 {{ if (stat ".checksums/plugins.vim") -}}
