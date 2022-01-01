@@ -1,3 +1,8 @@
+command_exists() {
+	type -t "$1" &> /dev/null
+}
+export -f command_exists
+
 add_to_path() {
 	[ -d "$1" ] && ( ! echo "$PATH" | tr ":" "\n" | grep "^$1$" >/dev/null 2>&1 ) && export PATH="$1":"$PATH"
 }
