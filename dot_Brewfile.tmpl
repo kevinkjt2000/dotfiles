@@ -1,7 +1,10 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+
+{{ if not (eq .chezmoi.os "linux") -}}
 brew "bash-completion"
+{{ end -}}
 brew "bitwarden-cli"
 brew "coreutils"
 brew "diff-so-fancy"
