@@ -4,15 +4,19 @@
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 {{ end -}}
 
+{{ if and (not (lookPath "poetry")) (lookPath "pipx") -}}
+pipx install poetry
+{{ end -}}
+
+{{ if and (not (lookPath "virtualenv")) (lookPath "pipx") -}}
+pipx install virtualenv
+{{ end -}}
+
 {{ if lookPath "virtualenv" -}}
 # TODO make this section idempotent
 mkdir -p ~/.venvs
 virtualenv ~/.venvs/neovim
 ~/.venvs/neovim/bin/pip install jedi msgpack pynvim
-{{ end -}}
-
-{{ if and (not (lookPath "poetry")) (lookPath "pipx") -}}
-pipx install poetry
 {{ end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
