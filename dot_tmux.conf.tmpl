@@ -1,0 +1,83 @@
+# tmux plugin manager (tpm)
+set -g @plugin 'tmux-plugins/tpm'
+
+# be sensible
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Continuum and Resurrect
+set -g @plugin 'kevinkjt2000/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '15'
+set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-capture-pane-contents 'off'
+
+{{ template "tmux/tmuxline-snapshot.conf" }}
+
+# allow scrolling with the mouse wheel and pane navigation with mouse clicks
+# http://superuser.com/a/988688
+set -g mouse on
+
+# use vi like key bindings instead of the default emacs
+set -g mode-keys vi
+
+# enable copying to system clipboards
+set -g set-clipboard on
+
+# disable "release mouse drag to copy and exit copy-mode", ref: https://github.com/tmux/tmux/issues/140
+unbind-key -T copy-mode-vi MouseDragEnd1Pane
+
+# since MouseDragEnd1Pane neither exit copy-mode nor clear selection now,
+# let single click do selection clearing for us.
+bind-key -T copy-mode-vi MouseDown1Pane select-pane\; send-keys -X clear-selection
+
+# this line changes the default binding of MouseDrag1Pane, the only difference
+# is that we use `copy-mode -eM` instead of `copy-mode -M`, so that WheelDownPane
+# can trigger copy-mode to exit when copy-mode is entered by MouseDrag1Pane
+bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= \"#{pane_in_mode}\" \"copy-mode -eM\" \"send-keys -M\"' 'copy-mode -eM'
+
+# starting a visual selection is unbound in vim copy mode by default
+bind-key -T copy-mode-vi v send -X begin-selection
+
+# mac osx requires running in user namespace for clipboard access
+# TODO: test if Mac OS still needs this with OSC 52 escapes working
+{{ if lookPath "reattach-to-user-namespace" -}}
+set-option -g default-command "reattach-to-user-namespace -l bash"
+{{ end -}}
+
+# split panes using characters with better visual representation
+# and use the current pane's path in the new pane
+bind | split-window -h -c '#{pane_current_path}'
+unbind %
+bind - split-window -v -c '#{pane_current_path}'
+unbind '"'
+
+# use the current pane's path in the new window
+bind c new-window -c '#{pane_current_path}'
+
+# don't rename windows automatically
+set-option -g allow-rename off
+
+# automatically renumber windows every time a window is closed
+set-option -g renumber-windows on
+
+# enable true color for the various terminal
+set -as terminal-overrides ",st-256color:RGB"
+set -as terminal-overrides ",xterm:RGB"
+set -as terminal-overrides ",xterm-256color:RGB"
+set -ag terminal-overrides ",*:Ms=\\E]52;c;%p2%s\\7"
+
+# fix neovim :checkhealth recommendations
+set-option -sg escape-time 10
+set-option -g default-terminal "screen-256color"
+
+# start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# reload tmux configuration with <prefix> r
+bind r set-option status \; source-file ~/.tmux.conf \; set-option status
+
+# Initialize tpm (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+

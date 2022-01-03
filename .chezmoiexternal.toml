@@ -6,3 +6,9 @@
 [".local/share/nvim/site/autoload/plug.vim"]
   type = "file"
   url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
+[".tmux/plugins/tpm"]
+  type = "archive"
+  url = "https://github.com/tmux-plugins/tpm/archive/b699a7e01c253ffb7818b02d62bce24190ec1019.zip"
+  stripComponents = 1
+  exact = true
