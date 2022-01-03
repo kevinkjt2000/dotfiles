@@ -16,7 +16,9 @@ brew "fish"
 brew "fzf"
 brew "git"
 brew "git-gui"
+{{ if eq .chezmoi.os "darwin" -}}
 brew "gnupg"
+{{ end -}}
 brew "jq"
 brew "lab"
 brew "lastpass-cli"
