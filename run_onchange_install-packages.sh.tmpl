@@ -1,6 +1,6 @@
 #!/bin/sh
 
-{{ if and (not (lookPath "brew")) (lookPath "curl") (lookPath "bash") -}}
+{{ if and (eq .chezmoi.os "darwin") (not (lookPath "brew")) (lookPath "curl") (lookPath "bash") -}}
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 {{ end -}}
 
