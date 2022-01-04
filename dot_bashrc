@@ -9,7 +9,7 @@ main() {
 
 	setup_all_the_bash_stuff
 
-	command_exists brew && eval "$(brew shellenv)"
+	command_exists brew && eval "$(brew shellenv)" && [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 	command_exists chezmoi && eval "$(chezmoi completion bash)"
 	command_exists direnv && eval "$(direnv hook bash)"
 	command_exists terraform && complete -C "$(which terraform)" terraform
@@ -82,4 +82,4 @@ prj() {
 
 main
 
-# vi: ft=sh
+# vi: ft=bash
