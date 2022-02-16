@@ -69,7 +69,16 @@ setup_all_the_bash_stuff() {
 	command_exists dircolors && eval "$(dircolors)"  # Export LS_COLORS fanciness
 	setup_environment_variables
 	create_aliases
-	command_exists starship && eval "$(starship init bash)"
+	command_exists starship && enable_starship
+}
+
+function always_append_history(){
+	history -a
+}
+
+enable_starship() {
+	eval "$(starship init bash)"
+	starship_precmd_user_func="always_append_history"
 }
 
 prj() {
