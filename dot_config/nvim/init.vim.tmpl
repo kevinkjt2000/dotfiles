@@ -10,7 +10,7 @@ set nocompatible
 " Disable prettier default autoformat
 let g:prettier#autoformat = 0
 " Automatically format some filetypes with prettier
-autocmd BufWritePre *.cjs,*.js,*.jsx,*.yaml,*.yml,*.ts,*.tsx,*.css,*.scss PrettierAsync
+autocmd BufWritePre *.cjs,*.css,*.js,*.jsx,*.scss,*.svelte,*.ts,*.tsx,*.yaml,*.yml PrettierAsync
 
 " Some python ropeproject settings
 let g:pymode_rope = 1
