@@ -19,6 +19,9 @@ augroup format_v_file
 augroup END
 
 func! FormatVFile()
+	if !executable('v')
+		return
+	endif
 	!v fmt -w <afile>
 	e
 endfunc
