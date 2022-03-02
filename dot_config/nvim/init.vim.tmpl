@@ -12,6 +12,17 @@ let g:prettier#autoformat = 0
 " Automatically format some filetypes with prettier
 autocmd BufWritePre *.cjs,*.css,*.js,*.jsx,*.scss,*.svelte,*.ts,*.tsx,*.yaml,*.yml PrettierAsync
 
+" Automatically format v files
+augroup format_v_file
+	autocmd!
+	autocmd BufWritePost *.v,*.vsh silent call FormatVFile()
+augroup END
+
+func! FormatVFile()
+	!v fmt -w <afile>
+	e
+endfunc
+
 " Some python ropeproject settings
 let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
