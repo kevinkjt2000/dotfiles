@@ -1,6 +1,6 @@
 elixir 1.12.1-otp-24
 erlang 24.0.2
-golang 1.15.6
+golang 1.18
 nodejs 16.14.0
 oc 3.11.346
 python 3.8.12 3.10.2 3.9.10 3.7.12
