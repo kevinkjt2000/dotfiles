@@ -1,0 +1,24 @@
+board_manager:
+  additional_urls:
+    - "https://raw.githubusercontent.com/keyboardio/boardsmanager/master/package_keyboardio_index.json"
+daemon:
+  port: "50051"
+directories:
+  data: "{{- .chezmoi.homeDir -}}/.arduino15"
+  downloads: "{{- .chezmoi.homeDir -}}/.arduino15/staging"
+  user: "{{- .chezmoi.homeDir -}}/Arduino"
+library:
+  enable_unsafe_install: false
+logging:
+  file: ""
+  format: text
+  level: info
+metrics:
+  addr: :9090
+  enabled: true
+output:
+  no_color: false
+sketch:
+  always_export_binaries: false
+updater:
+  enable_notification: true
