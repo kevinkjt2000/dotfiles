@@ -16,7 +16,7 @@ oc_is_logged_in() {
 
 openshift_login() {
 	if ! oc_is_logged_in; then
-		oc login
+		oc login "$@"
 	fi
 }
 
