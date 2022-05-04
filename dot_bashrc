@@ -32,6 +32,7 @@ create_aliases() {
 	fi
 	command_exists thefuck && eval "$(thefuck --alias shimatta)"
 	alias pnvim="prj && nvim \"+CtrlP\""
+	command_exists rg && alias rg="rg --hidden -g '!.git'"
 }
 
 vpn_work() {
