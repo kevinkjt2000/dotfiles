@@ -24,11 +24,13 @@
 [alias]
   aa = add --all
   amend = commit --amend
-  cleanup = "!default_branch=$(git remote show origin | awk '/HEAD branch/ {print $NF}'); git remote prune origin && git checkout -q $default_branch && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base $default_branch $branch) && [[ $(git cherry $default_branch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
+  cleanup = "!default_branch=$(git default-branch); git remote prune origin && git checkout -q $default_branch && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base $default_branch $branch) && [[ $(git cherry $default_branch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
+  cleanup-merged = "!default_branch=$(git default-branch); git branch --merged $default_branch | grep -v $default_branch | xargs -no-run-if-empty git branch -d"
   co = checkout
   ci = commit
   ctags = "!${GIT_DIR}/hooks/ctags"
   dc = diff --cached
+  default-branch = "!git remote show origin | awk '/HEAD branch/ {print $NF}'"
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   mff = merge --ff-only
   patch = !git --no-pager diff --no-color
