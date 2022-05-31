@@ -26,7 +26,8 @@ create_aliases() {
 	alias grep="grep --color=auto --exclude=*~"
 	if command_exists reattach-to-user-namespace; then
 		alias ls="ls -G"
-		alias find="gfind"
+		command_exists gfind && alias find="gfind"
+		command_exists gxargs && alias xargs="gxargs"
 	else
 		alias ls="ls --color=auto"
 	fi
