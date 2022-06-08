@@ -39,6 +39,11 @@ bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= \"#{pane_in_mode}\" 
 # starting a visual selection is unbound in vim copy mode by default
 bind-key -T copy-mode-vi v send -X begin-selection
 
+{{ if lookPath "xsel" -}}
+# without this, nothing is copied on some terminals
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -i --clipboard"
+{{ end -}}
+
 {{ if lookPath "reattach-to-user-namespace" -}}
 # mac osx requires running in user namespace for clipboard access
 # TODO: test if Mac OS still needs this with OSC 52 escapes working
