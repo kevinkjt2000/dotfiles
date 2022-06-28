@@ -34,6 +34,7 @@ create_aliases() {
 	command_exists thefuck && eval "$(thefuck --alias shimatta)"
 	alias pnvim="prj && nvim \"+CtrlP\""
 	command_exists rg && alias rg="rg --hidden -g '!.git'"
+	command_exists paplay && alias ding="paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
 }
 
 vpn_work() {
