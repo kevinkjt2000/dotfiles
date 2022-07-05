@@ -52,6 +52,7 @@ vpn_work() {
 setup_environment_variables() {
 	export EDITOR=nvim
 	unset MAILCHECK  # Never check mail
+	command_exists mesg && mesg n  # Ignore system messages (having every tmux terminal be spammed is annoying)
 	export NO_AT_BRIDGE=1  # http://unix.stackexchange.com/questions/230238
 	export HISTSIZE=100000  # More command history! YAY!
 	export HISTFILESIZE=10000000  # and the space to store those commands
