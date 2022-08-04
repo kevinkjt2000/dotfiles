@@ -11,6 +11,9 @@ export -f add_to_path
 # Enable touch screen scrolling for firefox
 export MOZ_USE_XINPUT2=1
 
+# Fix fuzzy fonts in Java by enabling anti-aliasing defaults of each font
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
+
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
