@@ -11,6 +11,7 @@ endfunction
 
 call plug#begin(s:plugin_path)
 	Plug 'alvan/vim-closetag'
+	Plug 'AndrewRadev/splitjoin.vim'
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'davidhalter/jedi-vim'
