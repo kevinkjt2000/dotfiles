@@ -98,6 +98,13 @@ enable_starship() {
 	starship_precmd_user_func="always_append_history"
 }
 
+cdf() {
+	local selection
+	if selection=$(fd --type directory --print0 | fzf --read0); then
+		cd "$selection"
+	fi
+}
+
 prj() {
 	local repos_path="$HOME/repos"
 	local selection
