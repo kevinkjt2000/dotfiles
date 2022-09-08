@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+errcho(){
+	>&2 echo "$@"
+}
+
 kinit_login() {
 	if has klist && ! klist --test; then
 		kinit
@@ -11,12 +15,17 @@ oc_supports_gssapi() {
 }
 
 oc_is_logged_in() {
-	has oc && oc_supports_gssapi && oc whoami > /dev/null 2>&1
+	has oc && oc whoami > /dev/null 2>&1
 }
 
 openshift_login() {
 	if ! oc_is_logged_in; then
-		oc login "$@"
+		if oc_supports_gssapi; then
+			oc login "$@"
+		else
+			errcho "GSSAPI not supported, so an automatic login was not attempted"
+			exit 1
+		fi
 	fi
 }
 
