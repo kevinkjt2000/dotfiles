@@ -37,6 +37,7 @@
   default-branch = "!git remote show origin | awk '/HEAD branch/ {print $NF}'"
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   mff = merge --ff-only
+  my-branches = !git branch --format='%(refname:short)' | xargs -I{} sh -c 'git branch -a | grep "remotes/origin/{}"'
   patch = !git --no-pager diff --no-color
   pff = pull --ff-only
 
