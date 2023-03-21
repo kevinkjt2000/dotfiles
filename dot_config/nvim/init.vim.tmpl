@@ -10,7 +10,7 @@ set nocompatible
 " Disable prettier default autoformat
 let g:prettier#autoformat = 0
 " Automatically format some filetypes with prettier
-autocmd BufWritePre *.cjs,*.css,*.js,*.jsx,*.scss,*.svelte,*.ts,*.tsx,*.yaml,*.yml PrettierAsync
+autocmd BufWritePre *.cjs,*.css,*.js,*.jsx,*.html,*.scss,*.svelte,*.ts,*.tsx,*.yaml,*.yml PrettierAsync
 
 " Automatically format v files
 augroup format_v_file
