@@ -1,7 +1,10 @@
 [user]
 	email = ktindall@redhat.com
 	name = Kevin Tindall
-	signingkey = 0xAD372D5115446873
+	signingkey = ~/.ssh/id_rsa
 
 [commit]
 	gpgsign = true
+
+[gpg]
+	format = ssh
