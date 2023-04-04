@@ -108,7 +108,7 @@ cdf() {
 prj() {
 	local repos_path="$HOME/repos"
 	local selection
-	if selection=$(find "$repos_path" -maxdepth 5 -name '.git' -type d -printf '%P\0' 2>/dev/null | sed 's#/.git##g' | fzf --read0); then
+	if selection=$(find "$repos_path" -maxdepth 7 -name '.git' -type d -printf '%P\0' 2>/dev/null | sed 's#/.git##g' | fzf --read0); then
 		cd "$repos_path/$selection" || return
 	fi
 }
