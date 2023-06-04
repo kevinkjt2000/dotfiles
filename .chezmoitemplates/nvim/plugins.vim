@@ -31,6 +31,7 @@ call plug#begin(s:plugin_path)
 	Plug 'mgedmin/coverage-highlight.vim'
 	Plug 'moll/vim-node'
 	Plug 'nathanalderson/yang.vim'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nfvs/vim-perforce'
 	Plug 'ollykel/v-vim'
 	Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
