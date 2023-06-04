@@ -100,7 +100,13 @@ enable_starship() {
 
 cdf() {
 	local selection
-	if selection=$(fd --type directory --print0 | fzf --read0); then
+	local FD
+	if command_exists fdfind; then
+		FD=fdfind
+	else
+		FD=fd
+	fi
+	if selection=$($FD --type directory --print0 | fzf --read0); then
 		cd "$selection"
 	fi
 }
