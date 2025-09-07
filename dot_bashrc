@@ -37,18 +37,6 @@ create_aliases() {
 	command_exists paplay && alias ding="paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
 }
 
-vpn_work() {
-	local temp_file=$(mktemp)
-	# TODO: check if BW_SESSION is unset
-	# BW_SESSION=$(bw unlock --raw)
-	sudo ls > /dev/null
-	printf "%s\n%s%s" "$(bw get username "work VPN")" "$(bw get password "work VPN")" "$(bw get totp "work VPN")" > "$temp_file"
-	sudo openvpn --config /etc/openvpn/ovpn-1-rhvpn-tcp.conf --auth-user-pass "$temp_file" &
-	sleep 5
-	rm "$temp_file"
-	fg
-}
-
 setup_environment_variables() {
 	export EDITOR=nvim
 	unset MAILCHECK  # Never check mail
