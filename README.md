@@ -7,6 +7,7 @@ mkdir -p ~/.local/bin
 ~/.local/bin/chezmoi apply
 bash -l
 asdf plugin add golang
+asdf plugin add nodejs
 asdf plugin add python
 asdf plugin add terraform
 asdf install
