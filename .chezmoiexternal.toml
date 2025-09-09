@@ -10,6 +10,6 @@
 
 [".tmux/plugins/tpm"]
   type = "archive"
-  url = "https://github.com/tmux-plugins/tpm/archive/b699a7e01c253ffb7818b02d62bce24190ec1019.zip"
+  url = "https://github.com/tmux-plugins/tpm/archive/99469c4a9b1ccf77fade25842dc7bafbc8ce9946.zip"
   stripComponents = 1
   exact = true
