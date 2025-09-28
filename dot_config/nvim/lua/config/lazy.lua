@@ -27,4 +27,6 @@ require("lazy").setup({
   install = { colorscheme = { "tender", "habamax", } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+  -- prevent runtime path modification that causes treesitter parsing issue
+  performance = { rtp = { reset = false } },
 })
