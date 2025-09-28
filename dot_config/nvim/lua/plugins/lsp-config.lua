@@ -14,7 +14,24 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			vim.lsp.config("lua_ls", {})
+			vim.lsp.config("lua_ls", { settings = {
+				Lua = {
+					runtime = { version = 'LuaJIT' },
+					diagnostics = {
+						-- Get the language server to recognize common globals
+						globals = {
+							'require',
+							'vim',
+						},
+					},
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
+					-- Do not send telemetry data containing a randomized but unique identifier
+					telemetry = { enable = false },
+				},
+			}})
 		end
 	},
 }
