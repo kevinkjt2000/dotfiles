@@ -4,6 +4,11 @@
   url = "https://github.com/asdf-vm/asdf/releases/download/v{{ $asdfVersion }}/asdf-v{{ $asdfVersion }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
   path = "asdf"
 
+[".local/bin/stylua"]
+  type = "archive-file"
+  url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.3.0/stylua-{{ .chezmoi.os }}-x86_64.zip"
+  path = "stylua"
+
 [".tmux/plugins/tpm"]
   type = "archive"
   url = "https://github.com/tmux-plugins/tpm/archive/99469c4a9b1ccf77fade25842dc7bafbc8ce9946.zip"

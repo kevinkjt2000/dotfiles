@@ -16,15 +16,15 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>")
 -- TODO Change CtrlP buffer mode to open with <leader>b
 
 -- Improve display of warnings and errors
-vim.diagnostic.config {
-  severity_sort = true,
-  float = { border = 'rounded', source = 'if_many' },
-  virtual_text = {
-    current_line = true,
-    source = 'if_many',
-    spacing = 2,
-    format = function(diagnostic)
-      return diagnostic.message
-    end,
-  },
-}
+vim.diagnostic.config({
+	severity_sort = true,
+	float = { border = "rounded", source = "if_many" },
+	virtual_text = {
+		current_line = true,
+		source = "if_many",
+		spacing = 2,
+		format = function(diagnostic)
+			return diagnostic.message
+		end,
+	},
+})

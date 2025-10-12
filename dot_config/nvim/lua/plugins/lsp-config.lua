@@ -1,6 +1,6 @@
 return {
 	{
-		'mason-org/mason.nvim',
+		"mason-org/mason.nvim",
 		opts = {},
 	},
 	{
@@ -14,29 +14,31 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			vim.lsp.config("lua_ls", { settings = {
-				Lua = {
-					runtime = { version = 'LuaJIT' },
-					diagnostics = {
-						-- Get the language server to recognize common globals
-						globals = {
-							'require',
-							'vim',
+			vim.lsp.config("lua_ls", {
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						diagnostics = {
+							-- Get the language server to recognize common globals
+							globals = {
+								"require",
+								"vim",
+							},
 						},
-					},
-					workspace = {
-						-- Make the server aware of Neovim runtime files
-						library = {
-							vim.env.RUNTIME,
-							"${3rd}/luv/library",
+						workspace = {
+							-- Make the server aware of Neovim runtime files
+							library = {
+								vim.env.RUNTIME,
+								"${3rd}/luv/library",
+							},
+							-- Slower alternative:
+							-- library = vim.api.nvim_get_runtime_file("", true),
 						},
-						-- Slower alternative:
-						-- library = vim.api.nvim_get_runtime_file("", true),
+						-- Do not send telemetry data containing a randomized but unique identifier
+						telemetry = { enable = false },
 					},
-					-- Do not send telemetry data containing a randomized but unique identifier
-					telemetry = { enable = false },
 				},
-			}})
-		end
+			})
+		end,
 	},
 }
