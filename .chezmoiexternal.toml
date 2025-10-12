@@ -4,10 +4,6 @@
   url = "https://github.com/asdf-vm/asdf/releases/download/v{{ $asdfVersion }}/asdf-v{{ $asdfVersion }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
   path = "asdf"
 
-[".local/share/nvim/site/autoload/plug.vim"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-
 [".tmux/plugins/tpm"]
   type = "archive"
   url = "https://github.com/tmux-plugins/tpm/archive/99469c4a9b1ccf77fade25842dc7bafbc8ce9946.zip"
