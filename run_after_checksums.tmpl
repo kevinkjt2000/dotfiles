@@ -1,15 +1,5 @@
 #!/bin/sh
 
-nvim_cleanly_install_and_update_plugins() {
-	{{ if and (lookPath "virtualenv") (lookPath "nvim") -}}
-	nvim --headless +PlugClean! +PlugInstall +PlugUpdate +qall
-	nvim --headless "+CocInstall -sync coc-json coc-ltex" +qall
-	echo {{ sha256sum (include ".chezmoitemplates/nvim/plugins.vim") }} > {{ joinPath .chezmoi.sourceDir ".checksums/plugins.vim" }}
-	{{- else -}}
-	:
-	{{- end }}
-}
-
 tmux_cleanly_install_and_update_plugins() {
 	{{ if and (lookPath "virtualenv") (lookPath "tmux") -}}
 	cd "$HOME/.tmux/plugins/tpm/bin" && ./clean_plugins && ./install_plugins && ./update_plugins all
@@ -18,14 +8,6 @@ tmux_cleanly_install_and_update_plugins() {
 	:
 	{{- end }}
 }
-
-{{ if (stat ".checksums/plugins.vim") -}}
-	{{ if ne (trim (include ".checksums/plugins.vim")) (sha256sum (include ".chezmoitemplates/nvim/plugins.vim")) -}}
-		nvim_cleanly_install_and_update_plugins
-	{{ end -}}
-{{ else -}}
-	nvim_cleanly_install_and_update_plugins
-{{- end }}
 
 {{ if (stat ".checksums/tmux-plugins") -}}
 	{{ if ne (trim (include ".checksums/tmux-plugins")) (sha256sum (include "dot_tmux.conf.tmpl")) -}}
