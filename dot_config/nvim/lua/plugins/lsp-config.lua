@@ -21,6 +21,7 @@ return {
 						diagnostics = {
 							-- Get the language server to recognize common globals
 							globals = {
+								"love",
 								"require",
 								"vim",
 							},
