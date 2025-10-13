@@ -1,5 +1,9 @@
 return {
 	{
+		"ctrlpvim/ctrlp.vim",
+		cmd = { "CtrlP", "CtrlPBuffer" },
+	},
+	{
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },

@@ -12,8 +12,14 @@ vim.keymap.set("n", "<leader>w", ":w<cr>")
 -- Fast swap to previous buffer
 vim.keymap.set("n", "<leader><leader>", "<C-^>")
 
--- TODO Change CtrlP to open with <leader>f instead
--- TODO Change CtrlP buffer mode to open with <leader>b
+-- Configure CtrlP
+vim.keymap.set("n", "<leader>f", ":CtrlP<cr>")
+vim.keymap.set("n", "<leader>b", ":CtrlPBuffer<cr>")
+vim.g.ctrlp_user_comand = {
+	types = { [1] = { ".git", 'cd %s && git ls-files -co --exclude-standard | grep -v "/\\.keep"' } },
+	fallback = "find %s -type f",
+}
+vim.g.ctrlp_working_path_mode = ""
 
 -- Improve display of warnings and errors
 vim.diagnostic.config({
