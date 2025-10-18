@@ -1,12 +1,13 @@
 return {
 	{
-		"mason-org/mason.nvim",
-		opts = {},
-	},
-	{
 		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 		opts = {
 			ensure_installed = {
+				"gopls",
 				"lua_ls",
 			},
 		},
@@ -80,6 +81,10 @@ return {
 				vim.keymap.set("n", "<leader>r", on_rename, bufoptsWithDesc("Rename symbol"))
 			end
 
+			vim.lsp.config("gopls", {
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				on_attach = on_attach,

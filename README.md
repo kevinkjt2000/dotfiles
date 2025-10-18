@@ -10,6 +10,7 @@ asdf plugin add golang
 asdf plugin add nodejs
 asdf plugin add python
 asdf plugin add terraform
+asdf plugin add tree-sitter
 asdf install
 chezmoi apply
 ```
