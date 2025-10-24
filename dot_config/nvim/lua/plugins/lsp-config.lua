@@ -33,6 +33,7 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "path" },
 					{ name = "emoji" },
 				}, {
 					{ name = "buffer" },
@@ -81,9 +82,12 @@ return {
 				vim.keymap.set("n", "<leader>r", on_rename, bufoptsWithDesc("Rename symbol"))
 			end
 
-			vim.lsp.config("gopls", {
+			vim.lsp.config("*", {
 				capabilities = capabilities,
 				on_attach = on_attach,
+			})
+
+			vim.lsp.config("gopls", {
 				settings = {
 					gopls = {
 						completeUnimported = true,
@@ -93,8 +97,6 @@ return {
 				},
 			})
 			vim.lsp.config("lua_ls", {
-				capabilities = capabilities,
-				on_attach = on_attach,
 				settings = {
 					Lua = {
 						runtime = { version = "LuaJIT" },
