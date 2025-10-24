@@ -84,6 +84,13 @@ return {
 			vim.lsp.config("gopls", {
 				capabilities = capabilities,
 				on_attach = on_attach,
+				settings = {
+					gopls = {
+						completeUnimported = true,
+						gofumpt = true,
+						staticcheck = true,
+					},
+				},
 			})
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
