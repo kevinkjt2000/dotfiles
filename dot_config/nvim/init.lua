@@ -12,6 +12,9 @@ vim.keymap.set("n", "<leader>w", ":w<cr>")
 -- Fast swap to previous buffer
 vim.keymap.set("n", "<leader><leader>", "<C-^>")
 
+-- Make the completion popups more obvious
+vim.o.winborder = "rounded"
+
 -- Configure CtrlP
 vim.keymap.set("n", "<leader>f", ":CtrlP<cr>")
 vim.keymap.set("n", "<leader>b", ":CtrlPBuffer<cr>")
