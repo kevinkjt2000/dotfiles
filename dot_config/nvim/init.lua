@@ -15,6 +15,11 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>")
 -- Make the completion popups more obvious
 vim.o.winborder = "rounded"
 
+-- Smaller tabs
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.expandtab = false
+
 -- Configure CtrlP
 vim.keymap.set("n", "<leader>f", ":CtrlP<cr>")
 vim.keymap.set("n", "<leader>b", ":CtrlPBuffer<cr>")
