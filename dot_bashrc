@@ -15,11 +15,7 @@ main() {
 	command_exists chezmoi && eval "$(chezmoi completion bash)"
 	command_exists direnv && eval "$(direnv hook bash)"
 	command_exists terraform && complete -C "$(which terraform)" terraform
-
-	if [ -d "$HOME/.asdf" ]; then
-		source "$HOME/.asdf/asdf.sh"
-		source "$HOME/.asdf/completions/asdf.bash"
-	fi
+	command_exists asdf && . <(asdf completion bash)
 }
 
 create_aliases() {
