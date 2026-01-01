@@ -24,7 +24,7 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	install = { colorscheme = { "tender", "habamax" } },
+	install = { colorscheme = { "habamax" } },
 	-- disable automatic check for plugin updates
 	checker = { enabled = false },
 	-- disable notification when reloading config changes

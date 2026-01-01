@@ -5,6 +5,13 @@ return {
 		cmd = { "CtrlP", "CtrlPBuffer" },
 	},
 	{
+		"morhetz/gruvbox",
+		lazy = false,
+		config = function()
+			vim.cmd([[colorscheme gruvbox]])
+		end,
+	},
+	{
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
