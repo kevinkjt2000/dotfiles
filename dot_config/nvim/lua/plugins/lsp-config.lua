@@ -76,8 +76,10 @@ return {
 						},
 					},
 				},
-				ruff = {},
 				pyright = {},
+				ruff = {},
+				svelte = {},
+				ts_ls = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
@@ -85,6 +87,8 @@ return {
 				"pyright",
 				"ruff",
 				"stylua",
+				"svelte",
+				"ts_ls",
 			})
 			require("mason-lspconfig").setup({ ensure_installed = ensure_installed })
 
