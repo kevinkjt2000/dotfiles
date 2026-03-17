@@ -7,6 +7,7 @@ mkdir -p ~/.local/bin
 ~/.local/bin/chezmoi apply
 bash -l
 asdf plugin add golang
+asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git
 asdf plugin add nodejs
 asdf plugin add python
 asdf plugin add terraform
