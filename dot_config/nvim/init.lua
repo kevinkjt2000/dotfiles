@@ -23,10 +23,7 @@ vim.o.expandtab = false
 -- Configure CtrlP
 vim.keymap.set("n", "<leader>f", ":CtrlP<cr>")
 vim.keymap.set("n", "<leader>b", ":CtrlPBuffer<cr>")
-vim.g.ctrlp_user_comand = {
-	types = { [1] = { ".git", 'cd %s && git ls-files -co --exclude-standard | grep -v "/\\.keep"' } },
-	fallback = "find %s -type f",
-}
+vim.g.ctrlp_user_command = { ".git", 'git -C %s ls-files --cached --others --exclude-standard | grep -v "/\\.keep"' }
 vim.g.ctrlp_working_path_mode = ""
 
 -- Improve display of warnings and errors
