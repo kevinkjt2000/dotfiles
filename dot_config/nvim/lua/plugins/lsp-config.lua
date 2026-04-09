@@ -78,6 +78,7 @@ return {
 				},
 				pyright = {},
 				ruff = {},
+				rust_analyzer = {},
 				svelte = {},
 				ts_ls = {},
 			}
@@ -86,6 +87,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"pyright",
 				"ruff",
+				"rust_analyzer",
 				"stylua",
 				"svelte",
 				"ts_ls",

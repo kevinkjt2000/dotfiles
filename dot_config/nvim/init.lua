@@ -42,7 +42,7 @@ vim.diagnostic.config({
 
 -- Enable treesitter syntax highlighting
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "go" },
+	pattern = { "go", "rust" },
 	callback = function()
 		vim.treesitter.start()
 	end,
@@ -52,10 +52,18 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("User", {
 	pattern = "TSUpdate",
 	callback = function()
-		require("nvim-treesitter.parsers").go = {
+		local parsers = require("nvim-treesitter.parsers")
+		parsers.go = {
 			install_info = {
 				url = "https://github.com/tree-sitter/tree-sitter-go",
 				revision = "2346a3ab1bb3857b48b29d779a1ef9799a248cd7",
+				queries = "queries",
+			},
+		}
+		parsers.rust = {
+			install_info = {
+				url = "https://github.com/tree-sitter/tree-sitter-rust.git",
+				revision = "77a3747266f4d621d0757825e6b11edcbf991ca5",
 				queries = "queries",
 			},
 		}
