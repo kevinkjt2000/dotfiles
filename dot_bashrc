@@ -4,9 +4,6 @@
 main() {
 	add_to_path "$HOME/.local/bin"
 	add_to_path "$HOME/.asdf/shims"
-	add_to_path "/usr/local/sbin"
-	add_to_path /home/linuxbrew/.linuxbrew/bin
-	add_to_path /home/linuxbrew/.linuxbrew/sbin
 	add_to_path "$HOME/.cargo/bin"
 
 	setup_all_the_bash_stuff
