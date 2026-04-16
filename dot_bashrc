@@ -47,10 +47,6 @@ setup_environment_variables() {
 	export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 	export PYTHON_CONFIGURE_OPTS="--enable-shared"  # Fix asdf python
 	export BASH_SILENCE_DEPRECATION_WARNING=1  # Silence Mac OS zsh default shell message
-	local keybase_dir
-	if command_exists keybase && keybase_dir=$(false && keybase config get --bare mountdir); then
-		export KEYBASE_DIR=$keybase_dir
-	fi
 }
 
 setup_all_the_bash_stuff() {
