@@ -32,7 +32,6 @@
 {{- end }}
   co = checkout
   ci = commit
-  ctags = "!${GIT_DIR}/hooks/ctags"
   dc = diff --cached
   default-branch = "!git remote show origin | awk '/HEAD branch/ {print $NF}'"
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
