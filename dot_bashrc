@@ -24,6 +24,7 @@ create_aliases() {
 	if command_exists reattach-to-user-namespace; then
 		alias ls="ls -G"
 		command_exists gfind && alias find="gfind"
+		command_exists gsed && alias sed="gsed"
 		command_exists gxargs && alias xargs="gxargs"
 	else
 		alias ls="ls --color=auto"
