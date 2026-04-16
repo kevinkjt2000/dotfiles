@@ -44,9 +44,7 @@ setup_environment_variables() {
 	export HISTCONTROL=ignoreboth  # Ignore duplicate commands and commands that start with ' '
 	export HISTCONTROL+=":erasedups"  # Erase duplicates form history
 	export HISTIGNORE="ls:bg:fg:history"
-	export CHROME_BIN=chromium  # Enables angular to find chrome exe
 	export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
-	export DOT_GITHUB_HOME="$XDG_CONFIG_HOME"
 	export PYTHON_CONFIGURE_OPTS="--enable-shared"  # Fix asdf python
 	export BASH_SILENCE_DEPRECATION_WARNING=1  # Silence Mac OS zsh default shell message
 	local keybase_dir
