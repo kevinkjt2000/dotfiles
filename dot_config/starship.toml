@@ -1,3 +1,7 @@
 [custom.immediate_history]
 command = "history -a"
 description = "Immediately record commands into history."
+
+[custom.ssh-agent]
+format = '🔑'
+when = 'test -n "$SSH_AUTH_SOCK"'
